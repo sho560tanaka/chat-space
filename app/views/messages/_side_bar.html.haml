@@ -1,0 +1,24 @@
+.chat-side
+  .side-top
+    .side-top__box
+      %p.side-top__box__username
+        tanaka
+      %ul.side-top__box__menu
+        %li.side-top__box__new-group
+          = link_to "#" do
+            = icon('fas', 'cog')
+        %li.side-top__box__edit-user
+          = link_to "#" do
+            = icon('fas', 'edit')
+
+  .groups
+    .group
+      %p.group__group-name
+        group1
+      %p.group__latest-message
+        まだメッセージがないよ
+    .group
+      %p.group__group-name
+        group2
+      %p.group__latest-message
+        まだメッセージがないよ
