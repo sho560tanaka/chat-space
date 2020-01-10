@@ -1,0 +1,22 @@
+.message
+  .message__upper-info
+    .message__upper-info__user-name
+      = message.user.name
+    .message__upper-info__date
+      = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .lower-message
+    - if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+
+    -# .message
+    -#   .message__upper-info
+    -#     %p.message__upper-info__talker tanaka
+    -#     %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
+    -#   %p.message__text おはよう
+    -# .message
+    -#   .message__upper-info
+    -#     %p.message__upper-info__talker tanaka
+    -#     %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
+    -#   %p.message__text こんにちわ
