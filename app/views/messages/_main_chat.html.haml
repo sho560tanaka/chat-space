@@ -2,11 +2,14 @@
   .main-top
     .main-top__left-box
       %h2.main-top__left-box__current-group
-        group1
+        = @group.name
+
       %ul.main-top__left-box__member-list
         Member：
         %li.main-top__left-box__member-list__member
-        tanaka
+          - @group.users.each do |user|
+            = user.name
+
     = link_to "", "#"
     .main-top__edit-btn Edit
   .messages
