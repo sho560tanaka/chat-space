@@ -146,16 +146,19 @@
   display: flex;
 }
 
-.input-box{
+.new_message{
   position: relative;
+}
+
+.input-box__image{
+  font-size: 1.3rem;
+  position: absolute;
+  top: 10px;
+  right: 130px;
+  cursor: pointer;
+}
+.input-box{
   width: 100%;
-  &__image{
-    font-size: 1.3rem;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
   &__text{
     height: 50px;
     width: 100%;

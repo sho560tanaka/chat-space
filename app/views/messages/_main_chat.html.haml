@@ -2,33 +2,25 @@
   .main-top
     .main-top__left-box
       %h2.main-top__left-box__current-group
-        group1
+        = @group.name
+
       %ul.main-top__left-box__member-list
         Member：
         %li.main-top__left-box__member-list__member
-        tanaka
-    = link_to "", "#"
-    .main-top__edit-btn Edit
-  .messages
-    .message
-      .message__upper-info
-        %p.message__upper-info__talker tanaka
-        %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
-      %p.message__text おはよう
-    .message
-      .message__upper-info
-        %p.message__upper-info__talker tanaka
-        %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
-      %p.message__text こんにちわ
-  .form
-    %form#new_message.new_message{"accept-charset": "UTF-8", action: "/groups", method: "post"}
-      %input{name: "utf8", type: "hidden", value: "✓"}/
-      %input{name: "authenticity_token", type: "hidden", value: "#"}/
-      .input-box
-        %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-        %label.input-box__image{for: "message_image"}
-          %i.fa.fa-image
-          %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
-      %input.submit-btn{"data-disable-with":"Save", name: "commit", type: "submit", value: "Save"}/
+          - @group.users.each do |user|
+            = user.name
 
+    = link_to 'Edit', "/groups/#{@group.id}/edit", class: 'main-top__edit-btn'
+    
+  .messages
+    = render @messages
+ 
+  .form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'input-box', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas', 'image')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit 'Send', class: 'submit-btn'
        
