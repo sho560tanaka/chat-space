@@ -1,4 +1,4 @@
-.message
+.message{data: {message: {id: message.id}}}
   .message__upper-info
     .message__upper-info__user-name
       = message.user.name
@@ -9,14 +9,3 @@
       %p.lower-message__content
         = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
-
-    -# .message
-    -#   .message__upper-info
-    -#     %p.message__upper-info__talker tanaka
-    -#     %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
-    -#   %p.message__text おはよう
-    -# .message
-    -#   .message__upper-info
-    -#     %p.message__upper-info__talker tanaka
-    -#     %p.message__upper-info__date 2020/01/05(Sun) 11:21:10
-    -#   %p.message__text こんにちわ
