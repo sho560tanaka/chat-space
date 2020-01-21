@@ -63,12 +63,10 @@ $(function(){
     });
   })
 
-//$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
-if (document.location.href.match(/\/groups\/\d+\/messages/)) {
-  setInterval(reloadMessages, 7000);
-}
+
 
   var reloadMessages = function() {
+    console.log("bbb")
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     last_message_id = $('.message:last').data("message-id");
     $.ajax({
@@ -99,4 +97,9 @@ if (document.location.href.match(/\/groups\/\d+\/messages/)) {
       alert('error');
     });
   };
+
+  //$(function(){});の閉じタグの直上(処理の最後)に以下のように追記
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
